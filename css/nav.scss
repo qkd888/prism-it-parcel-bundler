@@ -1,0 +1,121 @@
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background: rgba(8, 89, 121, 0.929);
+  box-shadow: 0px 0px 8px 0.9px black;
+  border: none;
+  position: fixed;
+  padding: 0.5em;
+  z-index: 1;
+  top: 0;
+
+  .logo>a>svg {
+    position: relative;
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    width: 150px;
+    height: 50px;
+    top: 0.5em;
+
+    @media (min-width: 480px) {
+      top: 0;
+    }
+  }
+
+  .nav-links-container {
+    position: relative;
+    display: flex;
+    margin-right: 1em;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      font-size: 1em;
+      transition: all 0.4s ease;
+      display: none;
+      cursor: pointer;
+      margin-left: 2.2em;
+
+      @media (min-width:480px) {
+        display: block;
+        font-size: 0.6em;
+      }
+
+      @media (min-width:768px) {
+        display: block;
+        font-size: 0.9em;
+      }
+    }
+
+    a:hover {
+      transform: scale(1.05);
+      transition: all 0.4s ease;
+    }
+  }
+
+  //****** NAV-TOGGLE **********************/
+  //****************************************/
+  .nav-toggle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0em;
+    background: none;
+    width: 4em;
+    height: 4em;
+    border: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+
+    @media (min-width:480px) {
+      display: none;
+    }
+  }
+}
+
+.mobile-nav {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  background: white;
+  left: 0;
+  top: 100%;
+
+  &.show-mobile-nav {
+    display: block;
+  }
+
+  .links {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    color: rgb(218, 229, 255);
+    transition: all 0.04s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00ddff3a;
+    background: #014e5aee;
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .links:hover {
+    transform: scale(1.04);
+    transition: all 0.04s ease;
+    cursor: pointer;
+  }
+}

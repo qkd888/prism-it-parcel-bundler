@@ -1,0 +1,20 @@
+//************* FOOTER ***************/
+//************************************/
+footer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5em;
+    background: #1e2729;
+    color: #D3F3F8;
+    margin-top: -2.1em;
+
+    a {
+        text-decoration: none;
+        color: #00aaffc6;
+        font-weight: bold;
+    }
+}
