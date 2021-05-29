@@ -117,51 +117,114 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/nav.js":[function(require,module,exports) {
-var navToggle = document.querySelector(".nav-toggle");
-var mobileNav = document.querySelector(".mobile-nav");
-navToggle.addEventListener('click', function () {
-  if (!mobileNav.classList.contains('show-mobile-nav')) {
-    mobileNav.classList.add('show-mobile-nav');
-    document.body.addEventListener('click', function (e) {
-      if (!navToggle.contains(e.target)) {
-        mobileNav.classList.remove('show-mobile-nav');
-      }
-    });
-  } else {
-    mobileNav.classList.remove('show-mobile-nav');
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
-});
-},{}],"js/hero.js":[function(require,module,exports) {
-console.log("working hero js file");
-},{}],"js/our-services.js":[function(require,module,exports) {
-var elem = document.querySelector('.main-carousel');
-var flkty = new Flickity(elem, {
-  // options
-  cellAlign: 'center',
-  contain: true
-});
-},{}],"js/service-information.js":[function(require,module,exports) {
-console.log("service-information-working");
-},{}],"js/about-us.js":[function(require,module,exports) {
-console.log("about-us-JS");
-},{}],"js/contact.js":[function(require,module,exports) {
-console.log("contact JS");
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
 
-require("./js/nav");
+  return bundleURL;
+}
 
-require("./js/hero");
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-require("./js/our-services");
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
 
-require("./js/service-information");
+  return '/';
+}
 
-require("./js/about-us");
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
 
-require("./js/contact");
-},{"./js/nav":"js/nav.js","./js/hero":"js/hero.js","./js/our-services":"js/our-services.js","./js/service-information":"js/service-information.js","./js/about-us":"js/about-us.js","./js/contact":"js/contact.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/nav.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/hero.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./..\\images\\hero.jpg":[["hero.0f0b5fd4.jpg","images/hero.jpg"],"images/hero.jpg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/our-services.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/service-information.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./..\\images\\thumb-img-1.jpg":[["thumb-img-1.f9bcf437.jpg","images/thumb-img-1.jpg"],"images/thumb-img-1.jpg"],"./..\\images\\thumb-img-2.jpg":[["thumb-img-2.a2ab12f5.jpg","images/thumb-img-2.jpg"],"images/thumb-img-2.jpg"],"./..\\images\\thumb-img-3.jpg":[["thumb-img-3.b4e24093.jpg","images/thumb-img-3.jpg"],"images/thumb-img-3.jpg"],"./..\\images\\thumb-img-4.jpg":[["thumb-img-4.fdd495c5.jpg","images/thumb-img-4.jpg"],"images/thumb-img-4.jpg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/about-us.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./..\\images\\about-us.jpg":[["about-us.2e963876.jpg","images/about-us.jpg"],"images/about-us.jpg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/contact.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/footer.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"style.pcss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./css/nav.scss":"css/nav.scss","./css/hero.scss":"css/hero.scss","./css/our-services.scss":"css/our-services.scss","./css/service-information.scss":"css/service-information.scss","./css/about-us.scss":"css/about-us.scss","./css/contact.scss":"css/contact.scss","./css/footer.scss":"css/footer.scss","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -365,5 +428,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/prism-it-parcel-bundler.e31bb0bc.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/style.a03c7ab1.js.map

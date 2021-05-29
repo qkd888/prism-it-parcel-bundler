@@ -1,4 +1,6 @@
-import "../parcel-boilerplate/js/nav";
-import "../parcel-boilerplate/js/our-services";
-import "../parcel-boilerplate/js/service-information";
-import "../parcel-boilerplate/js/about-us";
+import "./js/nav";
+import "./js/hero"
+import "./js/our-services";
+import "./js/service-information";
+import "./js/about-us";
+import "./js/contact";

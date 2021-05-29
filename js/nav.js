@@ -13,5 +13,5 @@ navToggle.addEventListener('click', () => {
 	} else {
 		mobileNav.classList.remove('show-mobile-nav')
 	}
-});
+})
 
